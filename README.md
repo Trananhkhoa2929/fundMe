@@ -65,7 +65,7 @@ Trước khi bắt đầu, đảm bảo bạn đã cài đặt:
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/GoFundMeBlockchain.git
+git clone https://github.com/Trananhkhoa2929/fundMe.git
 cd GoFundMeBlockchain
 ```
 
