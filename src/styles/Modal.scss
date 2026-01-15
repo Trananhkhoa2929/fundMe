@@ -1,0 +1,153 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:  100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  width: 90%;
+  max-width:  500px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform:  translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cancel-balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  padding-bottom:  20px;
+  border-bottom:  1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cancel-balance p {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.close {
+  font-size: 32px;
+  color: #cbd5e1;
+  cursor:  pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.close:hover {
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e4e4e7;
+  margin-bottom: 8px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #ec4899;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+}
+
+.text-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+small {
+  display: block;
+  margin-top: 6px;
+  color: #10b981;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.btn-donate {
+  width: 100%;
+  padding:  16px;
+  background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+  color: white;
+  border:  none;
+  border-radius:  12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 28px;
+  box-shadow:  0 4px 20px rgba(236, 72, 153, 0.4);
+}
+
+.btn-donate:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(236, 72, 153, 0.6);
+}
+
+.btn-donate:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 24px;
+  }
+}
