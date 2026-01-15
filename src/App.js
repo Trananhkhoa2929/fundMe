@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.scss";
-import HeaderNav from "./components/HeaderNav";
+import Navbar from "./components/NavBar"; // ← Match the actual filename casing
 import ImageDesc from "./components/ImageDesc";
 import Featured from "./components/Featured";
 import Steps from "./components/Steps";
@@ -43,7 +43,7 @@ function App() {
     setLoading(true);
 
     try {
-      if (! window.ethereum) {
+      if (!window.ethereum) {
         alert("Please install MetaMask!");
         setLoading(false);
         return;
@@ -64,9 +64,9 @@ function App() {
 
   return (
     <div className="App">
-      <HeaderNav
+      {/* Sử dụng Navbar mới thay cho HeaderNav */}
+      <Navbar
         account={account}
-        isWalletInstalled={isWalletInstalled}
         connectWallet={connectWallet}
         loading={loading}
       />

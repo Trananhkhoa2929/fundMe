@@ -7,15 +7,13 @@ import mobile from "../assets/dotted-steps/mobile-ridge.svg";
 import secondMobile from "../assets/dotted-steps/secondMobileLine.svg";
 const Steps = () => {
   return (
-    // View for devices above 967px
-
-    <div className="steps-container">
+    <div className="steps-container" id="how-it-works">
       <div className="container-div">
         <div className="steps-inner">
           <div className="steps-expect-fund">
-            <p className="steps-expect">What to expect</p>
+            <p className="steps-expect">How It Works</p>
             <span className="steps-fund">
-              Donating ETH on GoFundMe takes just a few minutes
+              Donating ETH on CryptoGive takes just a few minutes
             </span>
           </div>
           <div className="steps-ridge-outer">

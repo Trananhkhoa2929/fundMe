@@ -2,8 +2,10 @@ import { Contract, ethers, utils } from "ethers";
 import * as Yup from "yup";
 import abi from "./DonateEth.json";
 
+// Contract address on Hardhat local network
+// Nếu restart hardhat node, bạn cần deploy lại và update address này
 const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-const contractABI = abi. abi;
+const contractABI = abi.abi;
 
 const getProvider = () => {
   if (typeof window.ethereum !== "undefined") {
@@ -13,9 +15,9 @@ const getProvider = () => {
 };
 
 export const convertEthToUsdt = async (eth) => {
-  const ETH_PRICE = 2500;
+  const ETH_PRICE = 2500; // Giá fix cứng hoặc gọi API lấy giá thật
   const usdValue = ETH_PRICE * eth;
-  return usdValue. toFixed(2);
+  return usdValue.toFixed(2);
 };
 
 export const getBalance = async (address) => {
@@ -29,11 +31,23 @@ export const getBalance = async (address) => {
     const balance = await provider.getBalance(address);
     const balanceInEth = utils.formatEther(balance);
     const formatted = Number(balanceInEth).toFixed(4);
-    console.log(`Balance for ${address}: ${formatted} ETH`);
     return formatted;
   } catch (error) {
     console.error("Error getting balance:", error);
     return "0.0000";
+  }
+};
+
+export const getDonations = async () => {
+  try {
+    const provider = getProvider();
+    // Sử dụng provider (read-only) để lấy dữ liệu
+    const contract = new Contract(contractAddress, contractABI, provider);
+    const donations = await contract.getDonors();
+    return donations;
+  } catch (error) {
+    console.error("Error fetching donations:", error);
+    return [];
   }
 };
 
@@ -62,31 +76,25 @@ export const donateEth = async (values, setLoading, removeModal) => {
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
 
-    const signerAddress = await signer.getAddress();
-    console.log("Donating from:", signerAddress);
-    console.log("Amount:", values.amountEth, "ETH");
-    console.log("Cause:", values.charity);
-
     const donateToACharity = new Contract(
       contractAddress,
       contractABI,
       signer
     );
 
-    const donationEntries = await donateToACharity.sendEthToCharity(
+    const donationTx = await donateToACharity.sendEthToCharity(
       values.donorName || "Anonymous",
       values.charity,
-      { value: utils.parseEther(values.amountEth. toString()) }
+      { value: utils.parseEther(values.amountEth.toString()) }
     );
 
-    console.log("Transaction sent:", donationEntries. hash);
-    console.log("Waiting for confirmation...");
+    console.log("Transaction sent:", donationTx.hash);
     
-    await donationEntries.wait();
+    await donationTx.wait();
     
     console.log("Transaction confirmed!");
     setLoading(false);
-    alert("✅ Donation Completed Successfully!\nThank you for your generosity!");
+    alert("✅ Donation Completed Successfully!");
     removeModal();
     
     setTimeout(() => {
@@ -101,25 +109,7 @@ export const donateEth = async (values, setLoading, removeModal) => {
     } else if (error.code === "INSUFFICIENT_FUNDS") {
       alert("❌ Insufficient funds in your wallet");
     } else {
-      alert("❌ Transaction failed:  " + (error.reason || error.message));
+      alert("❌ An error occurred during donation.");
     }
-  }
-};
-
-export const getDonations = async () => {
-  try {
-    const provider = getProvider();
-    const donateToACharity = new Contract(
-      contractAddress,
-      contractABI,
-      provider
-    );
-
-    const donations = await donateToACharity.getDonors();
-    console.log("Fetched donations:", donations. length);
-    return donations;
-  } catch (error) {
-    console.error("Error fetching donations:", error);
-    return [];
   }
 };

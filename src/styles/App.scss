@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 * {
   margin: 0;
@@ -6,29 +7,36 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Space Grotesk', -apple-system, sans-serif;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+  background: #0a0e1a;
   color: #e4e4e7;
   min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 .App {
   position: relative;
   min-height: 100vh;
+  width: 100%;
 }
 
 .App::before {
   content: '';
   position: fixed;
   top: 0;
-  left:  0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+    radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0e1a 0%, #16213e 50%, #0f3460 100%);
   pointer-events: none;
   z-index: 0;
 }
@@ -36,4 +44,18 @@ body {
 .App > * {
   position: relative;
   z-index: 1;
+}
+
+/* Container global */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
 }

@@ -1,90 +1,178 @@
-.steps-section {
-  padding: 100px 0;
-  background: rgba(15, 23, 42, 0.5);
+#how-it-works {
+  scroll-margin-top: 80px;
 }
 
 .steps-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.steps-header {
-  text-align: center;
-  margin-bottom: 64px;
-}
-
-.steps-header h2 {
-  font-size: 48px;
-  font-weight: 900;
-  background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
-  -webkit-background-clip:  text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 16px;
-}
-
-.steps-header p {
-  font-size: 18px;
-  color: #94a3b8;
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-
-.step-card {
-  background: rgba(30, 41, 59, 0.5);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 32px;
-  transition: all 0.3s ease;
+  padding: 80px 0;
   position: relative;
 }
 
-.step-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  border-color: rgba(236, 72, 153, 0.5);
+.steps-container .container-div {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.step-number {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
-  border-radius: 16px;
+.steps-expect-fund {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.steps-expect {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ec4899;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.steps-fund {
+  display: block;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.3;
+}
+
+.steps-ridge-outer {
+  display: block;
+}
+
+.steps-ridge-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.step {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.step:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.steps-ridge {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.steps-count {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  font-weight:  800;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+  border-radius: 16px;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: white;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
-.step-card h3 {
-  font-size: 22px;
-  font-weight:  700;
+.ridge,
+.second-ridge,
+.final-step-ridge {
+  position: absolute;
+  top: 50%;
+  right: -40%;
+  width: 80%;
+  transform: translateY(-50%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.steps-desc {
+  position: relative;
+  z-index: 1;
+}
+
+.steps-header {
+  font-size: 1.375rem;
+  font-weight: 700;
   color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
 }
 
-.step-card p {
-  font-size: 15px;
+.steps-text {
+  font-size: 0.9375rem;
   color: #94a3b8;
   line-height: 1.6;
 }
 
-@media (max-width: 1024px) {
-  .steps-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+/* Mobile styles */
+.steps-ridge-outer-mobile {
+  display: none;
+}
+
+@media (max-width: 968px) {
+  .steps-ridge-outer {
+    display: none;
   }
 
-  .steps-header h2 {
-    font-size: 36px;
+  .steps-ridge-outer-mobile {
+    display: block;
+  }
+
+  .steps-ridge-inner-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .step-mobile {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 1.5rem;
+  }
+
+  .steps-ridge-mobile {
+    position: relative;
+  }
+
+  .steps-count-mobile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .mob-ridge {
+    width: 48px;
+    height: 48px;
+  }
+
+  .steps-desc-mobile {
+    padding-left: 0;
+  }
+
+  .steps-header-mobile {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .steps-text-mobile {
+    font-size: 0.9375rem;
+    color: #94a3b8;
+    line-height: 1.6;
   }
 }
